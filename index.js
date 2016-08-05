@@ -11,6 +11,12 @@ if (!databaseUri) {
   console.log('DATABASE_URI not specified, falling back to localhost.');
 }
 
+if (!process.env.FACEBOOK_APP_ID) {
+  console.log('FACEBOOK_APP_ID not specified, facebook auth will be unavailable.');
+} else {
+  console.log('FACEBOOK_APP_ID: ' + process.env.FACEBOOK_APP_ID);
+}
+
 var api = new ParseServer({
   databaseURI: databaseUri || 'mongodb://localhost:27017/the-tryst',
   cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
